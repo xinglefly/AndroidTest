@@ -1,0 +1,26 @@
+package com.xinglefly.util;
+
+import android.app.Activity;
+import android.content.Intent;
+
+import com.xinglefly.R;
+
+
+public class ActivityUtil {
+
+    /**
+     * add a anim  and FLAG_ACTIVITY_CLEAR_TOP flag#;
+     * @param activity  
+     * @param intent
+     */
+    public static void startActivity(Activity activity,Intent intent){
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.push_in_right, R.anim.push_out_left);
+    }
+    
+    public static void finishActivity(Activity activity){
+    	activity.finish();
+        activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
+}

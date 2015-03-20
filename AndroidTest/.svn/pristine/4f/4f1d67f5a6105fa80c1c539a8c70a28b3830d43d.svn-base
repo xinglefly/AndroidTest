@@ -1,0 +1,143 @@
+package com.xinglefly.activity.control_ui;
+
+import java.util.ArrayList;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.xinglefly.R;
+import com.xinglefly.commonutil.BaseActivity;
+import com.xinglefly.datacontrol.MyBaseAdapter;
+import com.xinglefly.util.ActivityUtil;
+import com.xinglefly.util.ToastUtil;
+import com.xinglefly.util.ViewHolder;
+
+public class CheckSelector_UI extends BaseActivity implements OnClickListener {
+
+	private ArrayList<String> list;
+	private Button btn_checkall;
+	private Button btn_deletekall;
+	private ListView lv_selectall;
+	private MyBaseAdapter adapter;
+	private int checkNum;
+
+	@Override
+	protected void loadViewLayout() {
+		setContentView(R.layout.checkselector);
+	}
+
+	@Override
+	protected void findViewByid() {
+		img_header_view_back_key = (ImageView) findViewById(R.id.img_header_view_back_key);
+		img_header_view_back_key.setOnClickListener(this);
+		tv_titlename = (TextView) findViewById(R.id.tv_titlename);
+		tv_titlename.setText(getIntent().getStringExtra(TITLENAME));
+		list = new ArrayList<String>();
+		btn_checkall = (Button) findViewById(R.id.btn_checkall);
+		btn_deletekall = (Button) findViewById(R.id.btn_deletekall);
+		lv_selectall = (ListView) findViewById(R.id.lv_selectall);
+		initData();
+		adapter = new MyBaseAdapter(list, this);
+		lv_selectall.setAdapter(adapter);
+
+	}
+
+	/**
+	 * 初始化数据
+	 */
+	private void initData() {
+		for (int i = 0; i < 10; i++) {
+			list.add("最新数据" + i);
+		}
+	}
+
+	@Override
+	protected void setOnClick() {
+
+		btn_checkall.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				for (int i = 0; i < list.size(); i++) {
+					adapter.getIsSelected().put(i, true);
+				}
+				checkNum = list.size();
+				dataChanged();
+			}
+
+		});
+
+		btn_deletekall.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				for (int i = 0; i < list.size(); i++) {
+					if (adapter.getIsSelected().get(i)) {
+						adapter.getIsSelected().put(i, false);
+						checkNum--;
+					}
+				}
+				dataChanged();
+			}
+		});
+
+		lv_selectall.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+//				ViewHolder holder = (ViewHolder) view.getTag();
+				adapter.ck_select.toggle();
+				adapter.getIsSelected().put(position, adapter.ck_select.isChecked());
+				if (adapter.ck_select.isChecked() == true) {
+					checkNum++;
+				} else {
+					checkNum--;
+				}
+				ToastUtil.showToastText("选中-->" + adapter.getItemId(position)
+						+ ",id-->" + position + id+",checkNum-->"+checkNum);
+			}
+		});
+
+	}
+
+	/**
+	 * 刷新listview数据，更新UI
+	 */
+	private void dataChanged() {
+		adapter.notifyDataSetChanged();
+	}
+
+	@Override
+	protected void updateUI() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void processLogic() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.img_header_view_back_key:
+			ActivityUtil.finishActivity(CheckSelector_UI.this);
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+}

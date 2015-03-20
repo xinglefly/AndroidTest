@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_front_size">15sp</dimen>
+    <dimen name="head_titlename_fornt_size">20sp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="margin_bottom">15dp</dimen>
+    <dimen name="margin_oneside">10dp</dimen>
+    <dimen name="margin_doubleside">5dp</dimen>
+    <dimen name="margin_text_right">10dp</dimen>
+    <dimen name="list_padding">3dp</dimen>
+    <dimen name="list_marginbottom">5dp</dimen>
+    <dimen name="play_font_size">18sp</dimen>
+    <dimen name="play_padding_size">2dp</dimen>
+    <drawable name="actionbar_back">#ef202020</drawable>
+    <drawable name="play_font_color">#FFFFFF</drawable> <!-- 白色 -->
+    <drawable name="play_btn_color">#44B4FF</drawable>  <!-- 蓝色 -->
+    <drawable name="application_background">#e4e3e4</drawable><!-- 灰色 -->
+    <drawable name="application_bar_background">#ececec</drawable>
+    <drawable name="app_title_background">#E1E1E1</drawable>
+    <drawable name="application_textcolor">#666666</drawable>   <!-- 灰色 -->
+    <drawable name="upgrade_textcolor">#F79709</drawable><!-- 橙色 -->   
+    <drawable name="actionbar_textcolor">#55BBFF</drawable><!-- 蓝色 -->  
+    <drawable name="color_null">#00000000</drawable><!-- 蓝色 -->  
+</resources>

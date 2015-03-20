@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/top_b" >
+
+    <ImageView
+        android:id="@+id/img_header_view_back_key"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:scaleType="center"
+        android:src="@drawable/br_prev" />
+
+    <TextView
+        android:id="@+id/tv_titlename"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/head_titlename_fornt_size" />
+
+    <RelativeLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" >
+
+        <ImageView
+            android:id="@+id/header_view_update_bt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/playback_reload"
+            android:scaleType="center"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/header_view_update_pb"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"  />
+    </RelativeLayout>
+
+</RelativeLayout>

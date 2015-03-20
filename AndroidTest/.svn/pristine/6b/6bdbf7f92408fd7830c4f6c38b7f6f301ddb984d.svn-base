@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xinglefly"
+    android:versionCode="205101"
+    android:versionName="2.0.5.1.01" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="14" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" >
+    </supports-screens>
+
+    <!-- permission -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name="com.xinglefly.util.ContextUtil"
+        android:allowBackup="true"
+        android:icon="@drawable/missed_message"
+        android:label="@string/app_name" >
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name="com.xinglefly.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 主页 -->
+        <activity android:name="com.xinglefly.activity.Basically" />
+        <activity android:name="com.xinglefly.activity.BasicControlUI" />
+        <activity android:name="com.xinglefly.activity.AdvanceUI" />
+
+        <!-- 基础 -->
+        <activity android:name="com.xinglefly.activity.basically.StorageFileActivity" />
+        <activity android:name="com.xinglefly.activity.basically.SharedPreActivity" />
+
+        <!-- UI -->
+        <activity android:name="com.xinglefly.activity.control_ui.TextView_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.TextViewStartSpannActivity" />
+        <activity android:name="com.xinglefly.activity.control_ui.EditText_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.Button_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.ToggleButton_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.CheckBox_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.SeekBar_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.BitMap_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.ListView_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.Text" />
+        <activity android:name="com.xinglefly.activity.control_ui.ViewPager_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.fragment.Fragment_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.WebView_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.SimpleAdapter_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.Gridlayout_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.BaseAdapter_UI" />
+        <activity android:name="com.xinglefly.activity.control_ui.TimerCount" />
+        <activity
+            android:name="com.xinglefly.activity.control_ui.ViewPagerIndicator"
+            android:theme="@style/Theme.PageIndicatorDefaults" />
+
+        <!-- httpconnection UI -->
+        <activity android:name="com.xinglefly.activity.NetControlUI" />
+        <activity android:name="com.xinglefly.activity.httpconnection.HttpConnection" />
+        <activity android:name="com.xinglefly.activity.httpconnection.HttpClientConnection" />
+
+        <!-- fragment -->
+        <activity android:name="com.xinglefly.activity.control_ui.fragment.MfragmentTabHost" />
+
+        <!-- advance vitamio 3.0 -->
+        <activity
+            android:name="com.xinglefly.activity.advance.VideoViewDemo"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- vitamio 4.0 -->
+        <activity
+            android:name="io.vov.vitamio.demo.VideoViewDemo"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity android:name="io.vov.vitamio.demo.VitamioListActivity" />
+
+        <!-- Don't forgot InitActivity -->
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+    </application>
+
+    <!-- Junit -->
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.xinglefly" />
+
+</manifest>

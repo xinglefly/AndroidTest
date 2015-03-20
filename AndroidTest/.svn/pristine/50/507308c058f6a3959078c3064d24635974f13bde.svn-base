@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, AndroidTestActivity!</string>
+    <string name="app_name">AndroidTest</string>
+    <string name="file_name">保存文件</string>
+    <string name="tv_file_name">输入文件名称</string>
+    <string name="tv_file_content">输入文件内容</string>
+    <string name="btn_sd">保存到SD卡</string>
+    <string name="btn_rom">保存到Rom</string>
+    <string name="junit_hint">测试界面不显示，在测试代码块运行查看结果</string>
+    <string name="android_study_summary">android基础学习总汇</string>
+    <string name="junit_test">Junit测试</string>
+    <string name="rw_file">读写文件SD 或 内存</string>
+    <string name="sharedpreference">偏好设置SharedPreference</string>
+    <string name="xml_pull">xml解析</string>
+    <string name="sd_hasmouted">SD卡不可用，请检查设备是否安装！</string>
+    <string name="gps_show">GPS功能出现异常，登录按钮不可用</string>
+    <string name="username_showhint">用户名不能为空</string>
+    <string name="password_showhint">密码不能为空</string>
+    <string name="android_basis">Android基础</string>
+    <string name="android_basis_control">Android控件UI</string>
+    <string name="android_advance_control">高级应用</string>
+    <string name="android_ui_textview_startactivity">TextView 实现acitvity之间的跳转</string>
+    <string name="android_ui_textview">TextView控件应用</string>
+    <string name="android_ui_edittext">EditText内容限制及添加qq表情</string>
+    <string name="android_ui_button">Button下的监听事件</string>
+    <string name="android_ui_togglebutton">动态改变布局</string>
+    <string name="android_ui_checkbox">动态添加checkbox布局,静态添加头文件</string>
+    <string name="android_ui_seekbar">seekBar第一刻度和第二刻度区别</string>
+    <string name="android_ui_bitmap">BitMap位图的典型</string>
+    <string name="android_ui_listview">ListView几种常用用法</string>
+    <string name="android_ui_fragment">fragment详细用法</string>
+    <string name="android_ui_viewpager">左右滑动</string>
+    <string name="android_ui_WebView">webview应用</string>
+    <string name="android_ui_video">我的追剧</string>
+    <string name="android_ui_simpleAdapter">Simpleadapter图片处理本地和网络</string>
+    <string name="android_ui_gridlayout_UI">4.0出的网格布局</string>
+    <string name="android_ui_search_UI">actionbar搜索栏</string>
+    <string name="android_ui_timercount_UI">定时器关闭整个应用程序</string>
+    <string name="android_ui_viewpagerindicator_UI">ViewPagerIndicator使用</string>
+    <string name="android_ui_aynctask_UI">异步任务使用</string>
+    <string name="android_ui_checkSelector_UI">全选与取消应用</string>
+    <string name="android_ui_intent_UI">intent和bundle的区别</string>
+    <string name="android_ui_Xutil_UI">Xutil使用</string>
+    <string name="android_ui_pullrefresh_UI">PullRefresh下拉刷新</string>
+    <string name="android_ui_guide_UI">引导界面</string>
+    <string name="android_ui_baseAdapter_UI">BaseAdapter深入理解及性能优化</string>
+    <string name="android_net_httpurlcon">HttpUrlConnection访问网络资源</string>
+    <string name="android_net_httpclientcon">HttpClientConnection访问网络资源</string>
+    <string name="android_advance_vitamio30">vitamio 3.0 视频应用</string>
+    <string name="android_advance_vitamio40">vitamio 4.0 视频应用</string>
+    <string name="android_advance_vitamio42">vitamio 4.2.2 视频应用</string>
+
+</resources>

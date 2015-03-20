@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="login_background">#008FD5</color>
+    <color name="edit_controller">#FFFFFF</color>
+
+</resources>

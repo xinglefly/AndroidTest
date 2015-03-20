@@ -1,0 +1,46 @@
+package com.xinglefly.activity.control_ui;
+
+import android.content.Context;
+import android.widget.Switch;
+
+import com.xinglefly.R;
+import com.xinglefly.commonutil.BaseActivity;
+
+public class Search_UI extends BaseActivity {
+	private final String TAG = "actionBar";
+	private Context mContext = null;
+	public Switch mSwitch;
+
+	@Override
+	protected void loadViewLayout() {
+		// TODO Auto-generated method stub
+		setContentView(R.layout.autotextview_ui);
+		mContext = this;
+	}
+
+	@Override
+	protected void findViewByid() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void setOnClick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void updateUI() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void processLogic() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

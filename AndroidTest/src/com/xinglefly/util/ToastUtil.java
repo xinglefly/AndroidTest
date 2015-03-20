@@ -1,0 +1,44 @@
+package com.xinglefly.util;
+
+import android.content.Context;
+import android.widget.Toast;
+
+import com.xinglefly.MyApp;
+
+/**
+ * Toast Util
+ * 
+ * @author xinglefly
+ * 
+ */
+public class ToastUtil {
+	private static Toast toast = null;
+	private static String oldMsg;
+	private static long oneTime = 0;
+	private static long twoTime = 0;
+	private static Context context = MyApp.getInstance();
+
+	public static void showToastText(String text) {
+		showToastText(text, Toast.LENGTH_SHORT);
+	}
+
+	private static void showToastText(String text, int duration) {
+		if (toast == null) {
+			toast = Toast.makeText(context, text, duration);
+			toast.show();
+			oneTime = System.currentTimeMillis();
+		} else {
+			twoTime = System.currentTimeMillis();
+			if (oldMsg.equals(text)) {
+				if (twoTime - oneTime > duration)
+					toast.show();
+			} else {
+				oldMsg = text;
+				toast.setText(text);
+				toast.setDuration(Toast.LENGTH_SHORT);
+				toast.show();
+			}
+		}
+	}
+
+}

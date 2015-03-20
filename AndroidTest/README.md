@@ -1,0 +1,106 @@
+需求：
+	只有多练，多总结，多融合，才会有所提高
+	-------------------------------------------------------------------------------------------	
+	结合之前的项目，自己写一个称手的小型框架（这也是自己复习的最好的方式）
+		要求：注解写的要非常详细，代码的清晰度要高（合理应用继承关系），可读性高（代码的紧凑性，灵活应用这个方法）。逻辑清楚，重用代码要高。注意变量的命名准确，方法的命名。
+		界面：要求，每个界面设计的简洁，大方，界面样式要遵循一种格式。
+			采用头文件的引入方式来加载，每代开新的界面不同文字的提示标题，
+				如何实现头文件的代码只写一遍，其它的activity传值就行
+			
+		整合登录界面：遇到一个问题？我整合后的界面，登录后不会刷新界面，导致输入法无法隐藏？需要在子线程中进行。
+			
+			登录界面：软键盘中弹出时重新动态布局，（用了一下午时间来调错）半天
+				遇到问题：怎么就不显示输入框了？
+				原来是super.onMeasure(widthMeasureSpec, heightMeasureSpec)放在前面了，是放在最下面执行的;重绘控件的宽度和高度，
+				我猜测：主要是由于调用父类的重新测量时把宽高传过去。这也是让我明白了调用父类的构造方法有时在上面有时在下面
+				在LoginActivity中的onResume()中添加方法，适配输入控件的大小
+				getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE| WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+			主界面：自适应的高度来填充整个布局,效仿园博会的主页来做（dimen.xml,）
+				Android基础
+				网络服务
+				android控件
+				高级应用
+				框架层
+				底层驱动
+				
+				
+		BaseAcitvity:
+			4.0以上需要联网的代码
+			initView(){
+				loadViewLayout();	//加载页面布局文件
+				findViewByid();		//初始化控件
+				processLogic();		//处理逻辑
+				updateUI();			//更新界面
+			}
+			检查存储设备的状态
+			onKeyDown返回键
+			
+		commonUtil:公共类（常量的定义，命名的规范）
+			包括打印日志
+			流的读取
+			
+	-------------------------------------------------------------------------------------------	功能模块的总结(知识点的总结)
+	要求：遇到什么问题，及时解决，最好掌握了。	
+	1.保存文件
+		1)sd卡，判断sd卡的状态
+		2)rom	直接存储到系统中
+		3)先判断sd卡不可用，自动存入rom中
+	总结：
+		存储文件到rom和sd卡的区别？
+		Rom中：是从内存中读取和写入的，主要操作对象是内存，所以
+				FileOutputStream outstream = context.openOutputStream(filename);
+				FileInputStream instream = context.openInputStream(filename);(我在读取的时候忘记这个，所以一直没有读取成功)
+		SD中：手机外置设备，必须检测设备是否可用，不可用不可点击操作，可用，存储的路径为根路径。
+			Environment.getExternalState.equals(Environment.MEDIA_MOUTED);
+			EnVironment.getExternalStorageDirectory().getAbsolutePath()
+		为什么存储到Rom的时候，方法为Static的时候就会报错。
+			这个我试过好多次，但是不知道为什么会出现这种情况，让人很纳闷的。
+		new String() 和 toString()方法的区别？
+			java对象都继承于Object，Object中提供了toString方法，用于简单返回该类的类签名。在Java中，数组也可以看作是一种对象，
+			显然byte[]也是一种继承与Object的对象，并且它没有重写Object的toString方法，因此使用byte[]的toString返回的字符串也
+			就是byte[]的类签名。但是使用new String()构造方法将byte[]转换为字符串得到的就会是一个根据字节数组内容构造的字符串。
+	-------------------------------------------------------------------------------------------			
+	2.偏好设置，SharedPreference
+		界面，用户名，密码，点击设置为默认值
+				
+	-------------------------------------------------------------------------------------------			
+			
+	3.基础学习（在以后的应用中，将selector,animation都用上）
+		Activity的生命周期分为两层：
+			第一层：焦点生命周期：  onPause --> onResume -- onPause
+			第二层：可视生命周期：  onRestart --> onStart--> onResume -->onpause -->onStop
+			整体生命周期 : onCreate-->onstart-->onresume-->onpause-->onstop-->ondestroy 
+			
+			
+			
+	---------------------------------------------------------------------------------------------		
+			
+	4.自定义Activity之间跳转的动画效果。
+	
+	/***抽取公共方法：
+	ActivityUtil.startActivity(LoginActivity.this,new Intent(LoginActivity.this,ViewPagerIndicator.class),getString(R.string.android_basis));
+	***/
+	
+	自定义的  res/anim/   屏幕的宽是x轴，屏幕的高是y轴  
+	  	push_in_right   100%p
+	  	push_out_left	  -100%p	
+	 enterAnim 时调用：
+	 overridePendingTransition(R.anim.push_in_right, R.anim.push_out_left);
+	 
+	 作为finish()执行完调用：
+      exitAnim 时调用：overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);     
+     	overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);		
+                    以上两个为系统的动画效果   
+         为了避免StartActivity多个Instance,按照这种方式：
+         Intent intent = new Intent(getActivity(), SlideItemFragment.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			getActivity().overridePendingTransition(R.anim.push_in_right, R.anim.push_out_left);
+			
+			
+			
+			
+			
+			
+			
+					

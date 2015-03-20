@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/head_view" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/file_name"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_filename"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/tv_file_name" />
+
+    <EditText
+        android:id="@+id/et_filecontent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/tv_file_content"
+        android:inputType="textMultiLine"
+        android:lines="3" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_sd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_sd" />
+
+        <Button
+            android:id="@+id/btn_rom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_rom" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_savefile"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="保存文件" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="读取rom文件" />
+
+        <EditText
+            android:id="@+id/et_readname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入要读取的文件名" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_read_sd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="读取SD文件" />
+
+        <EditText
+            android:id="@+id/et_readname_sd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入要读取的文件名" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_show_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:textSize="16sp" />
+
+</LinearLayout>

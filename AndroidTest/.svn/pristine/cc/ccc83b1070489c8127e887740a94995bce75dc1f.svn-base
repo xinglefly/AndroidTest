@@ -1,0 +1,122 @@
+package com.xinglefly.activity.control_ui.fragment;
+
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TabHost.TabSpec;
+
+import com.xinglefly.R;
+import com.xinglefly.activity.control_ui.discovery.DiscoveryFragment;
+import com.xinglefly.commonutil.BaseActivity;
+import com.xinglefly.util.ContextUtil;
+
+/**
+ * 主界面
+ * @author xinglefly
+ *
+ */
+
+public class MfragmentTabHost extends FragmentActivity implements
+		OnClickListener {
+
+	public ImageView img_header_view_back_key; // 头文件
+	public TextView tv_titlename;
+
+	// 定义fragmenttabhost对象
+	private FragmentTabHost mTabHost;
+
+	// 定义数组来存放fragment
+	private Class fragmentArray[] = { VideoFragment.class,
+			DiscoveryFragment.class, ApplyFragment.class, MineFragment.class };
+
+	// 定义数组存放indicator图片
+	private int mImageViewArray[] = { R.drawable.tab_home_btn,
+			R.drawable.tab_message_btn, R.drawable.tab_square_btn,
+			R.drawable.tab_selfinfo_btn };
+
+	// 定义数组存放图标文字
+	private String mTextviewArray[] = { "视频", "新发现", "应用", "我的" };
+
+	@Override
+	protected void onCreate(Bundle arg0) {
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		super.onCreate(arg0);
+		setContentView(R.layout.tabhost);
+
+		inithead();
+
+		initView();
+
+	}
+
+	/**
+	 * 引入head文件
+	 */
+	private void inithead() {
+		img_header_view_back_key = (ImageView) findViewById(R.id.img_header_view_back_key);
+		img_header_view_back_key.setOnClickListener(this);
+		tv_titlename = (TextView) findViewById(R.id.tv_titlename);
+		tv_titlename
+				.setText(getIntent().getStringExtra(BaseActivity.TITLENAME));
+	}
+
+	/**
+	 * 初始化布局文件
+	 */
+	private void initView() {
+		// 实例化Tabhost对象
+		mTabHost = (FragmentTabHost) findViewById(R.id.tabhost);
+		mTabHost.setup(ContextUtil.getInstance(), getSupportFragmentManager(),
+				R.id.realcontent);
+
+		int count = fragmentArray.length;
+		for (int i = 0; i < count; i++) {
+			// 为每个tab按钮设置文字、图标、内容
+			TabSpec tabSpec = mTabHost.newTabSpec(mTextviewArray[i])
+					.setIndicator(getTabItemView(i));
+			// 将tab按钮添加到TabHost中
+			mTabHost.addTab(tabSpec, fragmentArray[i], null);
+			// 设置tab按钮的背景
+			mTabHost.getTabWidget().getChildAt(i)
+					.setBackgroundResource(R.drawable.selector_tab_background);
+		}
+
+	}
+
+	/**
+	 * 给tab按钮设置图标和文字
+	 * 
+	 * @param i
+	 * @return
+	 */
+	private View getTabItemView(int index) {
+		View view = getLayoutInflater().inflate(R.layout.tab_item_view, null);
+
+		ImageView imageview = (ImageView) view.findViewById(R.id.imageview);
+		imageview.setImageResource(mImageViewArray[index]);
+		TextView textView = (TextView) view.findViewById(R.id.textview);
+		textView.setText(mTextviewArray[index]);
+
+		return view;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.img_header_view_back_key:
+			finish();
+
+		default:
+			break;
+		}
+
+	}
+
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tv_playshow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:padding="3dp"
+        android:text="剧集名称（剧种）" />
+
+    <TextView
+        android:id="@+id/tv_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_playshow"
+        android:layout_marginLeft="10dp"
+        android:padding="3dp"
+        android:text="更新至第几集   " />
+
+    <ImageView
+        android:id="@+id/img_piece"
+        android:layout_width="3dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_playshow"
+        android:layout_toRightOf="@id/tv_update"
+        android:background="@drawable/face5" />
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_playshow"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/img_piece"
+        android:padding="3dp"
+        android:text="已有多少人订阅 " />
+
+</RelativeLayout>

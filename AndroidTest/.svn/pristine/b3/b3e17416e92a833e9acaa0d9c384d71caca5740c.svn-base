@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/head_view" />
+
+    <Button
+        android:id="@+id/addNewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加剧集" />
+
+    <ImageView
+        android:id="@+id/img_bitmap"
+        android:layout_width="360dp"
+        android:layout_height="125dp"
+        android:scaleType="matrix"
+        android:adjustViewBounds="true"
+        android:src="@drawable/videoimage" />
+
+</LinearLayout>

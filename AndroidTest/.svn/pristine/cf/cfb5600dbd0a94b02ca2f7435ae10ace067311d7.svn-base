@@ -1,0 +1,151 @@
+package com.xinglefly.commonutil;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.xinglefly.LoginActivity;
+import com.xinglefly.R;
+import com.xinglefly.util.Constant;
+
+/**
+ * 基础类
+ * 
+ * @author xinglefly
+ * 
+ */
+public abstract class BaseActivity extends Activity {
+
+	public static final boolean Debug = Constant.DEBUG;
+	public static final String TITLENAME = "titlename"; // 标题名称
+	public ImageView img_header_view_back_key; // 头文件
+	public TextView tv_titlename;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+				.detectDiskReads().detectDiskWrites().detectNetwork()
+				.penaltyLog().build());
+		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+				.detectLeakedSqlLiteObjects().penaltyLog().penaltyDeath()
+				.build());
+		requestWindowFeature(Window.FEATURE_NO_TITLE); // 无标题
+		// getWindow().requestFeature(Window.FEATURE_NO_TITLE); 一样的效果
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 竖屏显示
+		super.onCreate(savedInstanceState);
+
+		initView();
+	}
+
+	private void initView() {
+		loadViewLayout();
+		findViewByid();
+		setOnClick();
+		processLogic();
+		updateUI();
+	}
+
+	public boolean hasMountedSD() {
+		String state = Environment.getExternalStorageState();
+		if (!state.equals(Environment.MEDIA_MOUNTED)) {
+			Toast.makeText(BaseActivity.this, R.string.sd_hasmouted,
+					Toast.LENGTH_LONG).show();
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * 加载页面布局文件
+	 */
+	protected abstract void loadViewLayout();
+
+	/**
+	 * 初始化控件
+	 */
+	protected abstract void findViewByid();
+
+	/**
+	 * 监听事件
+	 */
+	protected abstract void setOnClick();
+
+	/**
+	 * 更新UI
+	 */
+	protected abstract void updateUI();
+
+	/**
+	 * 逻辑处理
+	 */
+	protected abstract void processLogic();
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	public void startIntent(Context context, Class clz) {
+		Intent intent = new Intent(context, clz.getClass());
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+		overridePendingTransition(R.anim.push_in_right, R.anim.push_out_left);
+	}
+
+	/**
+	 * 检测网络异常
+	 * 
+	 * @return
+	 */
+	public boolean getNetWorkStatus() {
+
+		boolean netSataus = false;
+		ConnectivityManager cwjManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+		cwjManager.getActiveNetworkInfo();
+
+		if (cwjManager.getActiveNetworkInfo() != null) {
+			netSataus = cwjManager.getActiveNetworkInfo().isAvailable();
+		}
+
+		if (!netSataus) {
+			Builder b = new AlertDialog.Builder(this).setTitle("没有可用的网络")
+					.setIcon(R.drawable.expect).setMessage("是否对网络进行设置？");
+			b.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					if (android.os.Build.VERSION.SDK_INT > 10) {
+						// 3.0以上打开设置界面，也可以直接用ACTION_WIRELESS_SETTINGS打开到wifi界面
+						startActivity(new Intent(
+								android.provider.Settings.ACTION_SETTINGS));
+					} else {
+						startActivity(new Intent(
+								android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+					}
+				}
+			}).setNegativeButton("知道了", null).show();
+
+		}
+
+		return netSataus;
+	}
+
+}
